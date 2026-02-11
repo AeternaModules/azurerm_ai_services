@@ -1,6 +1,6 @@
-variable "ai_servicess" {
+variable "ai_serviceses" {
   description = <<EOT
-Map of ai_servicess, attributes below
+Map of ai_serviceses, attributes below
 Required:
     - location
     - name
@@ -39,9 +39,9 @@ EOT
     sku_name                           = string
     custom_subdomain_name              = optional(string)
     fqdns                              = optional(list(string))
-    local_authentication_enabled       = optional(bool, true)
-    outbound_network_access_restricted = optional(bool, false)
-    public_network_access              = optional(string, "Enabled")
+    local_authentication_enabled       = optional(bool)   # Default: true
+    outbound_network_access_restricted = optional(bool)   # Default: false
+    public_network_access              = optional(string) # Default: "Enabled"
     tags                               = optional(map(string))
     customer_managed_key = optional(object({
       identity_client_id = optional(string)
@@ -53,11 +53,11 @@ EOT
       type         = string
     }))
     network_acls = optional(object({
-      bypass         = optional(string, "AzureServices")
+      bypass         = optional(string) # Default: "AzureServices"
       default_action = string
       ip_rules       = optional(set(string))
       virtual_network_rules = optional(object({
-        ignore_missing_vnet_service_endpoint = optional(bool, false)
+        ignore_missing_vnet_service_endpoint = optional(bool) # Default: false
         subnet_id                            = string
       }))
     }))
