@@ -56,15 +56,15 @@ EOT
       bypass         = optional(string) # Default: "AzureServices"
       default_action = string
       ip_rules       = optional(set(string))
-      virtual_network_rules = optional(object({
+      virtual_network_rules = optional(list(object({
         ignore_missing_vnet_service_endpoint = optional(bool) # Default: false
         subnet_id                            = string
-      }))
+      })))
     }))
-    storage = optional(object({
+    storage = optional(list(object({
       identity_client_id = optional(string)
       storage_account_id = string
-    }))
+    })))
   }))
 }
 

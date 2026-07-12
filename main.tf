@@ -36,7 +36,7 @@ resource "azurerm_ai_services" "ai_serviceses" {
       default_action = network_acls.value.default_action
       ip_rules       = network_acls.value.ip_rules
       dynamic "virtual_network_rules" {
-        for_each = network_acls.value.virtual_network_rules != null ? [network_acls.value.virtual_network_rules] : []
+        for_each = network_acls.value.virtual_network_rules != null ? network_acls.value.virtual_network_rules : []
         content {
           ignore_missing_vnet_service_endpoint = virtual_network_rules.value.ignore_missing_vnet_service_endpoint
           subnet_id                            = virtual_network_rules.value.subnet_id
@@ -46,7 +46,7 @@ resource "azurerm_ai_services" "ai_serviceses" {
   }
 
   dynamic "storage" {
-    for_each = each.value.storage != null ? [each.value.storage] : []
+    for_each = each.value.storage != null ? each.value.storage : []
     content {
       identity_client_id = storage.value.identity_client_id
       storage_account_id = storage.value.storage_account_id
