@@ -1,5 +1,5 @@
-resource "azurerm_ai_services" "ai_serviceses" {
-  for_each = var.ai_serviceses
+resource "azurerm_ai_services" "ai_services" {
+  for_each = var.ai_services
 
   location                           = each.value.location
   name                               = each.value.name

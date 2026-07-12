@@ -1,6 +1,6 @@
-variable "ai_serviceses" {
+variable "ai_services" {
   description = <<EOT
-Map of ai_serviceses, attributes below
+Map of ai_services, attributes below
 Required:
     - location
     - name
