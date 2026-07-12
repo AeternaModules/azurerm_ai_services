@@ -1,3 +1,7 @@
+output "ai_serviceses_id" {
+  description = "Map of id values across all ai_serviceses, keyed the same as var.ai_serviceses"
+  value       = { for k, v in azurerm_ai_services.ai_serviceses : k => v.id }
+}
 output "ai_serviceses_custom_subdomain_name" {
   description = "Map of custom_subdomain_name values across all ai_serviceses, keyed the same as var.ai_serviceses"
   value       = { for k, v in azurerm_ai_services.ai_serviceses : k => v.custom_subdomain_name }
