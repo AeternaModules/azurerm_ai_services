@@ -39,9 +39,9 @@ EOT
     sku_name                           = string
     custom_subdomain_name              = optional(string)
     fqdns                              = optional(list(string))
-    local_authentication_enabled       = optional(bool)   # Default: true
-    outbound_network_access_restricted = optional(bool)   # Default: false
-    public_network_access              = optional(string) # Default: "Enabled"
+    local_authentication_enabled       = optional(bool)
+    outbound_network_access_restricted = optional(bool)
+    public_network_access              = optional(string)
     tags                               = optional(map(string))
     customer_managed_key = optional(object({
       identity_client_id = optional(string)
@@ -53,11 +53,11 @@ EOT
       type         = string
     }))
     network_acls = optional(object({
-      bypass         = optional(string) # Default: "AzureServices"
+      bypass         = optional(string)
       default_action = string
       ip_rules       = optional(set(string))
       virtual_network_rules = optional(list(object({
-        ignore_missing_vnet_service_endpoint = optional(bool) # Default: false
+        ignore_missing_vnet_service_endpoint = optional(bool)
         subnet_id                            = string
       })))
     }))
