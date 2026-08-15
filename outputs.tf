@@ -8,7 +8,7 @@ output "ai_services_custom_subdomain_name" {
 }
 output "ai_services_customer_managed_key" {
   description = "Map of customer_managed_key values across all ai_services, keyed the same as var.ai_services"
-  value       = { for k, v in azurerm_ai_services.ai_services : k => v.customer_managed_key if v.customer_managed_key != null && length(v.customer_managed_key) > 0 }
+  value       = { for k, v in azurerm_ai_services.ai_services : k => one(v.customer_managed_key) if v.customer_managed_key != null && length(v.customer_managed_key) > 0 }
 }
 output "ai_services_endpoint" {
   description = "Map of endpoint values across all ai_services, keyed the same as var.ai_services"
@@ -20,7 +20,7 @@ output "ai_services_fqdns" {
 }
 output "ai_services_identity" {
   description = "Map of identity values across all ai_services, keyed the same as var.ai_services"
-  value       = { for k, v in azurerm_ai_services.ai_services : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_ai_services.ai_services : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "ai_services_local_authentication_enabled" {
   description = "Map of local_authentication_enabled values across all ai_services, keyed the same as var.ai_services"
@@ -36,7 +36,7 @@ output "ai_services_name" {
 }
 output "ai_services_network_acls" {
   description = "Map of network_acls values across all ai_services, keyed the same as var.ai_services"
-  value       = { for k, v in azurerm_ai_services.ai_services : k => v.network_acls if v.network_acls != null && length(v.network_acls) > 0 }
+  value       = { for k, v in azurerm_ai_services.ai_services : k => one(v.network_acls) if v.network_acls != null && length(v.network_acls) > 0 }
 }
 output "ai_services_outbound_network_access_restricted" {
   description = "Map of outbound_network_access_restricted values across all ai_services, keyed the same as var.ai_services"
